@@ -1,49 +1,49 @@
-import React from "react";
-import { CiBookmark } from "react-icons/ci";
-import "./Card.css";
+import { Bookmark } from 'lucide-react'
 
-export default function Card(props) {
+const Card = (props) => {
+  const { styles } = props;
+
   return (
-    <div className="card-container">
-      {/* Header Section with Logo and Save Button */}
-      <div className="card-header-section">
-        <div className="card-logo-section">
-          <img src={props.image} alt={props.company} className="card-company-logo" />
-          <div>
-            <h3 className="card-company-name">{props.company}</h3>
-            <p className="card-days-ago">{props.days} days ago</p>
+    <div style={styles.card}>
+      <div>
+        <div style={styles.top}>
+          <img src={props.brandLogo} alt={props.company} style={styles.topImg} />
+          <button
+            style={styles.topButton}
+            onMouseOver={(e) => e.target.style.backgroundColor = '#f5f5f5'}
+            onMouseOut={(e) => e.target.style.backgroundColor = 'transparent'}
+          >
+            Save <Bookmark size={10} />
+          </button>
+        </div>
+        <div style={styles.center}>
+          <h3 style={styles.centerH3}>
+            {props.company}
+            <span style={styles.centerSpan}>{props.datePosted}</span>
+          </h3>
+          <h2 style={styles.centerH2}>{props.post}</h2>
+          <div style={styles.tag}>
+            <h4 style={styles.tagH4}>{props.tag1}</h4>
+            <h4 style={styles.tagH4}>{props.tag2}</h4>
           </div>
         </div>
-        <button
-          className="card-save-button"
-          aria-label="Save job"
-        >
-          <CiBookmark size={24} />
-        </button>
       </div>
-
-      {/* Job Title */}
-      <h2 className="card-job-title">{props.position}</h2>
-
-      {/* Tags Section */}
-      <div className="card-tags-section">
-        {props.tag1 && <span className="card-tag">{props.tag1}</span>}
-        {props.tag2 && <span className="card-tag">{props.tag2}</span>}
-      </div>
-
-      {/* Price and Location with Apply Button */}
-      <div className="card-info-section">
-        <div className="card-price-location">
-          <h3 className="card-price">{props.price}</h3>
-          <p className="card-location">{props.location}</p>
+      <div style={styles.bottom}>
+        <div>
+          <h3 style={styles.bottomH3}>{props.pay}</h3>
+          <p style={styles.bottomP}>{props.location}</p>
         </div>
         <button
-          className="card-apply-button"
-          onClick={() => props.onApply?.()}
+          style={styles.bottomButton}
+          onMouseOver={(e) => e.target.style.backgroundColor = 'rgb(40, 40, 40)'}
+          onMouseOut={(e) => e.target.style.backgroundColor = 'rgb(18, 18, 18)'}
         >
-          Apply now
+          Apply Now
         </button>
       </div>
     </div>
-  );
+  )
 }
+
+export default Card
+
