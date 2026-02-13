@@ -8,11 +8,11 @@ const colorMap = {
     gray: "bg-gray-400",
 };
 
-const Button = ({ bg = "red", text }) => {
+const Button = ({ bg = "red", text, onClick }) => {
     const bgClass = colorMap[bg] || colorMap.red;
 
     return (
-        <button className={`${bgClass} text-white rounded-full px-5 py-2 shadow-md`}>
+        <button className={`${bgClass} text-white rounded-full px-5 py-2 shadow-md`} onClick={onClick}>
             {text}
         </button>
     );
